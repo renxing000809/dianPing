@@ -21,9 +21,7 @@ public class LoginInterceptor implements HandlerInterceptor {
             response.setStatus(401);
             return false;
         }
-        UserDTO userDTO = new UserDTO();
-        BeanUtils.copyProperties(user, userDTO);
-        UserHolder.saveUser(userDTO);
+        UserHolder.saveUser((UserDTO) user);
         return HandlerInterceptor.super.preHandle(request, response, handler);
     }
 
